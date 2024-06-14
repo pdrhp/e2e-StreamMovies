@@ -8,7 +8,13 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 //
-require('cypress-xpath');
+require("cypress-xpath");
+
+Cypress.Commands.add("getLocalStorage", (key) => {
+  cy.window().then((win) => {
+    return win.localStorage.getItem(key);
+  });
+});
 //
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
